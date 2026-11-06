@@ -205,6 +205,18 @@ let license: JSONValue = ["spdx": "LicenseRef-bilibili-Model-Use", "commercial_u
 let model = ModelDefinition.engine(IndexTTS2Package.self, id: modelID, title: "IndexTTS 2.5", lanes: lanes,
                                    operations: [speakOperation])
 
+/// The offer's extension (Base §6.2), declared so Gaea admits and forwards it: the eight emotion weights.
+let params: JSONValue = [
+    "type": "object", "additionalProperties": false,
+    "properties": [
+        "x-indextts.emotion_vector": [
+            "type": "array", "minItems": 8, "maxItems": 8, "items": ["type": "number", "minimum": 0, "maximum": 1.2],
+            "description": "Instead of an emotion label: eight weights, 0–1.2, for happy, angry, sad, afraid, disgusted, melancholic, surprised and calm, blended. emotion.intensity scales them (0.6 when absent).",
+            "x-mes-ui": ["label": "Emotion mix", "advanced": true],
+        ],
+    ],
+]
+
 let offer = PluginManifest.Offer(
     operation: "audio.speak", profile: "audio",
     model: [
@@ -219,7 +231,8 @@ let offer = PluginManifest.Offer(
         ],
         "limits": ["max_text_chars": .int(Int64(maxTextChars)), "max_voice_ref_s": .double(maxVoiceRefSeconds),
                    "max_duration_s": 600],
-    ])
+    ],
+    params: params)
 
 /// Gaea says an asset is gone: the model forgets the reference it cached under it, if it's loaded.
 let forgetAsset: @Sendable (String, ResidentEngine) async -> Void = { asset, resident in
@@ -227,7 +240,7 @@ let forgetAsset: @Sendable (String, ResidentEngine) async -> Void = { asset, res
 }
 
 public let indexTTSPlugin = GaeaPluginDefinition(
-    id: "com.xocialize.gaea.indextts", version: "0.1.0", minGaea: "1.0.0", team: "CFZS6RXUCP",
+    id: "com.xocialize.gaea.indextts", version: "0.1.1", minGaea: "1.0.0", team: "CFZS6RXUCP",
     repo: "https://github.com/xocialize-code/gaea-plugin-indextts", title: "IndexTTS 2.5",
     summary: "IndexTTS 2.5 (bilibili): speech in a voice cloned from a clip, in five languages, with the emotion set apart from the voice and the length fitted to a cue (MES audio.speak).",
     license: "Apache-2.0", executable: "gaea-indextts-worker",

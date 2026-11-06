@@ -17,7 +17,7 @@ let package = Package(
     dependencies: [
         kitPath.map { .package(path: $0) }
             ?? .package(url: "https://github.com/xocialize-code/gaea-plugin-kit.git", from: "0.10.0"),
-        .package(url: "https://github.com/xocialize/mlx-indextts2-swift.git", from: "0.5.0"),
+        .package(url: "https://github.com/xocialize/mlx-indextts2-swift.git", from: "0.6.0"), // the caller-keyed voice cache MES §13 allows (AB-A-0251)
         .package(url: "https://github.com/xocialize/mlx-engine-swift.git", from: "0.74.1"),
         // MLX's random state, which the GPT samples from: a seeded run seeds it first. The fleet's mlx-swift fork, as
         // mlx-engine-swift 0.74.1 takes it: 0.32.4 is upstream 0.32.3 plus the _updateInternal leak fix

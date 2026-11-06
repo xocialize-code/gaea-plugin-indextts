@@ -1,5 +1,5 @@
 {
-  "originHash" : "f5c8acec5691fe115dc32d02540422386a3836d14c6805d2e4b34e47e929699e",
+  "originHash" : "39cd0fb18c426549ce0ba8e69865cc4f0012a634c558c6f50aa4f9230ca9ae6d",
   "pins" : [
     {
       "identity" : "designscaffold",
@@ -42,8 +42,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/xocialize/mlx-indextts2-swift.git",
       "state" : {
-        "revision" : "90cd975f2c25abf7c7be4f4f749cdf52dfd79d7f",
-        "version" : "0.5.0"
+        "revision" : "1b8298b3d5eb8f2e6835cab08203c97f43e00e61",
+        "version" : "0.6.0"
       }
     },
     {

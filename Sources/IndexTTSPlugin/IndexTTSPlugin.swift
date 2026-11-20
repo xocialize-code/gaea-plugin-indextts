@@ -240,7 +240,7 @@ let forgetAsset: @Sendable (String, ResidentEngine) async -> Void = { asset, res
 }
 
 public let indexTTSPlugin = GaeaPluginDefinition(
-    id: "com.xocialize.gaea.indextts", version: "0.1.1", minGaea: "1.0.0", team: "CFZS6RXUCP",
+    id: "com.xocialize.gaea.indextts", version: "0.1.2", minGaea: "1.0.0", team: "CFZS6RXUCP",
     repo: "https://github.com/xocialize-code/gaea-plugin-indextts", title: "IndexTTS 2.5",
     summary: "IndexTTS 2.5 (bilibili): speech in a voice cloned from a clip, in five languages, with the emotion set apart from the voice and the length fitted to a cue (MES audio.speak).",
     license: "Apache-2.0", executable: "gaea-indextts-worker",
